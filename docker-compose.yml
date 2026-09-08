@@ -1,7 +1,7 @@
 services:
 
   app:
-    build: .
+    image: iamharisdev/node-docker-app:latest
     container_name: node-app
 
     depends_on:
@@ -16,16 +16,13 @@ services:
     environment:
       APP_NAME: ${APP_NAME}
       APP_PORT: ${APP_PORT}
-
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
-
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-
 
   redis:
     image: redis:alpine
@@ -36,7 +33,6 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
-
 
   postgres:
     image: postgres:15-alpine
@@ -55,7 +51,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
 
 volumes:
   postgres-data:

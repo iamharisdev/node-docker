@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
     "Content-Type": "text/plain"
   });
 
-  res.end(`${appName} is running! 🚀`);
+  res.end(`${appName} is running in live server! 🚀`);
 });
 
 async function start() {

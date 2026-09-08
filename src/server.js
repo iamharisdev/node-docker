@@ -40,6 +40,7 @@ async function start() {
     "Database time:",
     result.rows[0].now
   );
+  console.log("🚀 Version 2 deployed!");
 
   server.listen(appPort, () => {
     console.log(

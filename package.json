@@ -1,0 +1,11 @@
+{
+  "name": "node-docker-demo",
+  "version": "1.0.0",
+  "scripts": {
+     "start": "node src/server.js"
+  },
+  "dependencies": {
+    "pg": "^8.23.0",
+    "redis": "^6.2.1"
+  }
+}

@@ -5,7 +5,8 @@ const {
   dbPort,
   dbName,
   dbUser,
-  dbPassword
+  dbPassword,
+  dbSsl
 } = require("../config/env");
 
 const db = new Client({
@@ -13,7 +14,10 @@ const db = new Client({
   port: dbPort,
   database: dbName,
   user: dbUser,
-  password: dbPassword
+  password: dbPassword,
+  ssl: dbSsl === "true"
+    ? { rejectUnauthorized: false }
+    : false
 });
 
 async function connectDatabase() {

@@ -1,11 +1,24 @@
 {
   "name": "node-docker-demo",
   "version": "1.0.0",
+  "type": "commonjs",
   "scripts": {
-     "start": "node src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.0",
+    "hono": "^4.9.0",
     "pg": "^8.23.0",
-    "redis": "^6.2.1"
+    "pm2": "^6.0.13"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "nodemon": "^3.1.14"
   }
 }

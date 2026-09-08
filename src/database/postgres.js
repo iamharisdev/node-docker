@@ -1,4 +1,5 @@
-const { Client } = require("pg");
+const { Pool } = require("pg");
+const { drizzle } = require("drizzle-orm/node-postgres");
 
 const {
   dbHost,
@@ -9,7 +10,7 @@ const {
   dbSsl
 } = require("../config/env");
 
-const db = new Client({
+const pool = new Pool({
   host: dbHost,
   port: dbPort,
   database: dbName,
@@ -20,12 +21,9 @@ const db = new Client({
     : false
 });
 
-async function connectDatabase() {
-  await db.connect();
-  console.log("PostgreSQL connected");
-}
+const db = drizzle(pool);
 
 module.exports = {
   db,
-  connectDatabase
+  pool
 };

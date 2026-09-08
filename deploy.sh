@@ -2,16 +2,26 @@
 
 set -e
 
-echo "Pulling latest Docker image..."
+if [ ! -f .env ]; then
+	echo ".env file is required on the deployment server"
+	exit 1
+fi
 
-docker compose -f docker-compose.prod.yml pull app
+echo "Pulling latest source code..."
 
-echo "Restarting production application..."
+git pull --ff-only origin main
 
-docker compose -f docker-compose.prod.yml up -d
+echo "Installing production dependencies..."
 
-echo "Cleaning old images..."
+npm ci
 
-docker image prune -f
+echo "Applying database migrations..."
+
+npm run db:migrate
+
+echo "Starting application with PM2..."
+
+./node_modules/.bin/pm2 startOrRestart ecosystem.config.js --env production
+./node_modules/.bin/pm2 save
 
 echo "Deployment completed successfully!"

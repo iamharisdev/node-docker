@@ -1,12 +1,9 @@
 module.exports = {
   appName: process.env.APP_NAME,
-  appPort: process.env.APP_PORT,
-
-  redisHost: process.env.REDIS_HOST,
-  redisPort: process.env.REDIS_PORT,
+  appPort: Number(process.env.APP_PORT || 3000),
 
   dbHost: process.env.DB_HOST,
-  dbPort: process.env.DB_PORT,
+  dbPort: Number(process.env.DB_PORT || 5432),
   dbName: process.env.DB_NAME,
   dbUser: process.env.DB_USER,
   dbPassword: process.env.DB_PASSWORD,
